@@ -5,6 +5,7 @@
                 <div class="card-header">Login</div>
                 <div class="card-body">
                     <form method="POST" v-on:submit.prevent="login()">
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                             <div class="col-md-6">
@@ -80,11 +81,12 @@
                         const token = res.data.access_token;
                         const expired = res.data.expires_in + Date.now();
                         this.$auth.setToken(token,expired);
-                        this.$router.push(`/dashboard`);
+                        this.$router.push(`/master`);
                         toast.fire('Success!', 'bien', 'success')
                     })
                     .catch((error) => {
-                        toast.fire('Uops!', error, 'warning');
+                        console.log(error);
+                        toast.fire('Uops!', 'error', 'warning');
                     })
 
             }
