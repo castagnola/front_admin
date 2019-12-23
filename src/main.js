@@ -7,11 +7,19 @@ import axios from 'axios'
 import Vue from 'vue';
 import swal from "sweetalert2";
 
+//import layouts
+import BootstrapSideBar from 'b-sidebar';
+
+
 /**
  * Globals uses
  */
 Vue.component(AlertError.name, AlertError);
 Vue.component(HasError.name, HasError);
+
+// Layouts
+Vue.use(BootstrapSideBar);
+
 Vue.use(Auth);
 
 window.vm =  new Vue();
@@ -33,7 +41,7 @@ window.toast = toast;
 /**
  * Components
  */
-Vue.component('navbar-component', require('./components/navbar/NavbarComponent').default);
+Vue.component('navbar-component', require('./components/layouts/NavbarComponent').default);
 
 
 new Vue({

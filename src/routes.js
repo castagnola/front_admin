@@ -12,8 +12,8 @@ const router = new VueRouter({
 
     routes: [
         {
-            path: '/',
-            redirect : require('./components/OAuth/LoginComponent').default,
+            path: '',
+            redirect:'/login',
             meta: {
                 forVisitors: true
             }
@@ -33,18 +33,18 @@ const router = new VueRouter({
             }
         },
         {
-            path: '/master',
+            path: '/dashboard',
             component: require('./components/layouts/MasterComponent').default,
             meta: {
                 forAuth: true
             },
-            children:[
-                {
-                    path: '/children',
-                    component: require('./components/layouts/MasterComponent').default,
-                }
-
-            ]
+            // children:[
+            //     {
+            //         // path: '/children',
+            //         // component: require('./components/layouts/MasterComponent').default,
+            //     }
+            //
+            // ]
 
         },
 
@@ -59,7 +59,7 @@ router.beforeEach(
         if (to.matched.some(record => record.meta.forVisitors)) {
             if (Vue.auth.isAuthenticated()) {
                 next({
-                    path: '/master'
+                    path: '/dashboard'
                 })
             } else next()
         } else if (to.matched.some(record => record.meta.forAuth)) {

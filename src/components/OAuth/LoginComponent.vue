@@ -76,16 +76,20 @@
         },
         methods: {
             login() {
-                axios.post(`api/login`, this.form)
+                this.form.post(`api/login`, this.form)
                     .then((res) => {
-                        const token = res.data.access_token;
-                        const expired = res.data.expires_in + Date.now();
-                        this.$auth.setToken(token,expired);
-                        this.$router.push(`/master`);
-                        toast.fire('Success!', 'bien', 'success')
+                        if(!res.data.error){
+                            const token = res.data.access_token;
+                            const expired = res.data.expires_in + Date.now();
+                            this.$auth.setToken(token,expired);
+                            this.$router.push(`/dashboard`);
+                            console.log(res);
+                            toast.fire('Success!', 'Welcome To Dashboard', 'success')
+                        }else{
+                            toast.fire('Uops!', res.data.message, 'warning');
+                        }
                     })
                     .catch((error) => {
-                        console.log(error);
                         toast.fire('Uops!', 'error', 'warning');
                     })
 
