@@ -1,9 +1,13 @@
 <template>
     <div id="master-layout">
-        <BootstrapSideBar :sidenavConfig="sidenavConfig" :header="header" :hasNavbar="hasNavbar" :links="sidelinks"
-                          :navs="headerLinks">
+        <!--        <BootstrapSideBar :sidenavConfig="sidenavConfig" :header="header" :hasNavbar="hasNavbar" :links="sidelinks"-->
+        <!--                          :navs="headerLinks">-->
+        <!--            <router-view/>-->
+        <!--        </BootstrapSideBar>-->
+        <BootstrapSideBar :sidenavConfig="sidenavConfig" :header="header" :hasNavbar="hasNavbar" :links="sidelinks" :navs="headerLinks">
             <router-view/>
         </BootstrapSideBar>
+
 
     </div>
 
@@ -20,31 +24,29 @@
         data() {
             return {
                 sidenavConfig: {
-                    sidenavMainColor: 'bg-primary',
+                    sidenavMainColor: 'bg-dark',
                     sidenavBgColor: 'navbar-dark',
                     navbarClass: 'custom-one',
                     sidenavClass: 'sidenav-custom-class'
                 },
                 header: {
-                    title:'Admin Panel',
-                    href:'home'
+                    title: 'App Admin',
+                    href: 'home'
                 },
                 hasNavbar: true,
-                // headerLinks: {
-                //     label:'Ejemplo',href:'#',links:[
-                //         {
-                //             label:'About',href:"/about"
-                //         }
-                //     ]
-                // },
-                // sidelinks: {
-                //
-                //     label:'Ejemplo',href:'#',navs:[
-                //         {
-                //             label:'About',href:"/about"
-                //         }
-                //     ]
-                // },
+                headerLinks: [
+                    {
+                        label:'Label', href:'#',navs:[
+                            {label:'About',href:"/about"},
+                            {label:'About 2',href:"#"}
+                        ]
+                    }
+                ],
+                sidelinks: [
+                    {label:'Ejemplo',href:"#",icon:'fa-bell-o',links:[
+                            {label:'About',href:'#'}
+                        ]}
+                ]
 
             }
         }

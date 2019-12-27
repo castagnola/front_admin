@@ -7,9 +7,11 @@ import axios from 'axios'
 import Vue from 'vue';
 import swal from "sweetalert2";
 
+
 //import layouts
 import BootstrapSideBar from 'b-sidebar';
-
+import jquery from 'jquery';
+// (window as any).$ = (window as any).jQuery = jquery;
 
 /**
  * Globals uses
